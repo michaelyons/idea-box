@@ -1,3 +1,21 @@
-body {
-background-color: pink;
-};
+.top { 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #e5f3f2;
+    text-align: center;
+}
+
+.save-button {
+    background-color: #00a79d;
+    color: #fff;
+}
+
+h1 {
+    color: #00a79d;
+}
+
+span{
+    color: #6d6e71;
+}
