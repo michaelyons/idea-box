@@ -6,20 +6,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="path/to/your/jquery.min.js"><\/script>')</script>
     <title>Idea Box</title>
 </head>
 <body>
-
-    <section class="top">
-    <h1>idea<span>box</span></h1> 
-    <input id="title-input-value" type="text" placeholder="Title">
-    <input id="body-input-value" type="text" placeholder="Body">
-    <button type="submit" class="save-button" id="save-js">save</button>
+    <section>
+      <form class="top">
+        <h1>idea<span>box</span></h1> 
+        <input id="title-input-value" type="text" placeholder="Title">
+        <input id="body-input-value" type="text" placeholder="Body">
+        <button type="submit" class="save-button" id="save-js">save</button>
+      </form>
     </section>
-
-    <section class="bottom"></section>
-    
+    <section class="middle">
+      <input id="search-idea" type="text" placeholder="Search">
+    </section>
+    <section class="bottom">
+      <article>
+      </article>  
+    </section>
     <script type="text/javascript" src="script.js"></script>
-
 </body>
 </html>
