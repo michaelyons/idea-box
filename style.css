@@ -28,6 +28,11 @@
     color: #fff;
 }
 
+.delete {
+  background-image: url(/Users/kumi5605/Desktop/Turing-Docs/idea-box/delete-hover.svg);
+  /*border-radius: 50%;*/
+}
+
 h1 {
     color: #00a79d;
 }
