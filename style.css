@@ -1,3 +1,35 @@
+body {
+  font-family: 'Roboto Slab', serif;
+}
+
+h1 {
+    color: #00a79d;
+    font-weight: 700;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+span{
+    color: #6d6e71;
+}
+
+input {
+  width: 60vw;
+  font-size: 1rem;
+}
+
+button {
+  width: 60vw;
+}
+
+p {
+  text-align: center;
+}
+
+article {
+  width: 60%;
+}
+
 .top { 
     display: flex;
     align-items: center;
@@ -5,6 +37,7 @@
     flex-direction: column;
     background-color: #e5f3f2;
     text-align: center;
+    height: 45vh;
 }
 
 .middle {
@@ -13,30 +46,62 @@
   justify-content: center;
   flex-direction: column;
   text-align: center;
+  margin-top: 2rem;
 }
 
 .bottom {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  text-align: center;
+
+}
+
+.title-input {
+  height: 1.5rem;
+}
+
+.body-input {
+  margin-top: 1rem;
+  height: 1.5rem;
 }
 
 .save-button {
     background-color: #00a79d;
     color: #fff;
+    height: 2rem;
+    margin-top: 1rem;
+    font-size: 1rem;
+}
+
+.search-input {
+  height: 1.5rem;
+}
+
+.icon {
+  border: none;
+  height: 30px;
+  width: 30px;
 }
 
 .delete {
-  background-image: url(/Users/kumi5605/Desktop/Turing-Docs/idea-box/delete-hover.svg);
-  /*border-radius: 50%;*/
+  background-image: url("/Users/kumi5605/Desktop/Turing-Docs/idea-box/delete.svg");
 }
 
-h1 {
-    color: #00a79d;
+.delete:hover {
+  background-image: url("/Users/kumi5605/Desktop/Turing-Docs/idea-box/delete-hover.svg");
 }
 
-span{
-    color: #6d6e71;
+.upvote {
+  background-image: url("/Users/kumi5605/Desktop/Turing-Docs/idea-box/upvote.svg");
+  text-align: center;
+}
+
+.upvote:hover {
+  background-image: url("/Users/kumi5605/Desktop/Turing-Docs/idea-box/upvote-hover.svg");
+}
+
+.downvote {
+  background-image: url("/Users/kumi5605/Desktop/Turing-Docs/idea-box/downvote.svg");
+  text-align: center;
+}
+
+.downvote:hover {
+  background-image: url("/Users/kumi5605/Desktop/Turing-Docs/idea-box/downvote-hover.svg");
 }

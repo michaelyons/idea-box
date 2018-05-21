@@ -8,8 +8,8 @@ var qualityGenius = 'genius';
 
 
 saveButton.on('click', displayNewIdea);
-titleInput.on('input', toggleSaveDisabled);
-bodyInput.on('input', toggleSaveDisabled);
+// titleInput.on('input', toggleSaveDisabled);
+// bodyInput.on('input', toggleSaveDisabled);
 
 function displayNewIdea(event) {
   event.preventDefault();
@@ -18,11 +18,11 @@ function displayNewIdea(event) {
   var ideaList = $('.bottom');
   ideaList.prepend(`
   <h2> ${titleInput.val()}</h2>
-  <img src="/Users/kumi5605/Desktop/Turing-Docs/idea-box/delete-hover.svg">
+  <button class="delete icon"></button>
   <p>${bodyInput.val()}</p>
-  <button class="upvote"></button>
-  <button class="downvote"></button>
-  <p>Quality: ${qualityPlausible}</p>`);
+  <button class="upvote icon"></button>
+  <button class="downvote icon"></button>
+  <p class="">Quality: ${qualityPlausible}</p>`);
   clearTitleInput();
   clearBodyInput();
 };
