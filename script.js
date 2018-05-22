@@ -6,6 +6,8 @@ var qualitySwill = 'swill';
 var qualityPlausible = 'plausible';
 var qualityGenius = 'genius';
 var deleteButton = $('.delete')
+var ideasArray = [];
+
 
 
 saveButton.on('click', displayNewIdea);
@@ -15,6 +17,13 @@ deleteButton.on('click', '.delete', removeIdea);
 
 function displayNewIdea(event) {
   event.preventDefault();
+  var ideaObject = {
+    title: titleInput.val(),
+    body: bodyInput.val(),
+    quality: "swill"
+  };
+  ideasArray.push(ideaObject);
+  localStorage.setItem('ideas', JSON.stringify(ideasArray));
   ideaList.prepend(`
   <aside class="title-text">
   <h2 class="idea"> ${titleInput.val()}</h2>
@@ -51,3 +60,10 @@ function toggleSaveDisabled() {
 function removeIdea() {
   (this).parent().remove();
 }
+
+function getIdeasAndRender() {
+  let storedIdeas = JSON.parse(localStorage.getItem('ideas'))
+  for(i = 0; i < storedIdeas.length; i++) {
+    appendStuff(storedIdeas[i])
+  }
+} 
