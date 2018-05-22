@@ -14,12 +14,13 @@ saveButton.on('click', displayNewIdea);
 function displayNewIdea(event) {
   event.preventDefault();
   ideaList.prepend(`
+  <aside class=""
   <h2> ${titleInput.val()}</h2>
   <button class="delete icon"></button>
   <p>${bodyInput.val()}</p>
   <button class="upvote icon"></button>
   <button class="downvote icon"></button>
-  <p class="">Quality: ${qualityPlausible}</p>`);
+  <p class="">Quality: ${qualitySwill}</p>`);
   clearTitleInput();
   clearBodyInput();
 };
@@ -28,7 +29,7 @@ function clearTitleInput() {
   titleInput.val('');
 }
 
-function clearBodyInpu3t() {
+function clearBodyInput() {
   bodyInput.val('');
 }
 
