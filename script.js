@@ -8,15 +8,36 @@ var qualityGenius = 'genius';
 var deleteButton = $('.delete')
 var ideasArray = [];
 
+ideasArray = JSON.parse(localStorage.getItem('ideas')) || [];
 
-
-saveButton.on('click', displayNewIdea);
+saveButton.on('click', function(e){
+  e.preventDefault();
+  createIdea();
+  displayNewIdea();
+});
 titleInput.on('input', toggleSaveDisabled);
 bodyInput.on('input', toggleSaveDisabled);
 deleteButton.on('click', '.delete', removeIdea);
 
-function displayNewIdea(event) {
-  event.preventDefault();
+function displayNewIdea() {
+  ideaList.prepend(`
+  <aside class="title-text">
+  <h2 class="idea"> ${titleInput.val()}</h2>
+  <button class="delete icon"></button>
+  </aside>
+  <aside>
+  <p class="light-text">${bodyInput.val()}</p>
+  </aside>
+  <aside class="footer-text">
+  <button class="upvote icon"></button>
+  <button class="downvote icon"></button>
+  <p class="quality-text">quality: ${qualitySwill}</p>
+  </aside>`);
+  clearTitleInput();
+  clearBodyInput();
+ };
+
+function createIdea() {
   var ideaObject = {
     title: titleInput.val(),
     body: bodyInput.val(),
@@ -24,23 +45,28 @@ function displayNewIdea(event) {
   };
   ideasArray.push(ideaObject);
   localStorage.setItem('ideas', JSON.stringify(ideasArray));
-  ideaList.prepend(`
-  <aside class="title-text">
-  <h2 class="idea"> ${titleInput.val()}</h2>
-  <button class="delete icon"></button>
-  </aside>
-  <aside class="body-text">
-  <p class="light-text">${bodyInput.val()}</p>
-  </aside>
-  <aside class="footer-text">
-  <button class="upvote icon"></button>
-  <button class="downvote icon"></button>
-  <p class="quality-text">Quality: ${qualitySwill}</p>
-  </aside>`);
-  clearTitleInput();
-  clearBodyInput();
- };
+ }
 
+function getIdeasAndRender() {
+  for(i = 0; i < ideasArray.length; i++) {
+    ideaList.prepend(`
+    <aside class="title-text">
+    <h2 class="idea"> ${ideasArray[i].title}</h2>
+    <button class="delete icon"></button>
+    </aside>
+    <aside>
+    <p class="light-text">${ideasArray[i].body}</p>
+    </aside>
+    <aside class="footer-text">
+    <button class="upvote icon"></button>
+    <button class="downvote icon"></button>
+    <p class="quality-text">quality: ${ideasArray[i].quality}</p>
+    </aside>`);
+    clearTitleInput();
+    clearBodyInput();
+   };
+  }
+  
 function clearTitleInput() {
   titleInput.val('');
 }
@@ -60,10 +86,3 @@ function toggleSaveDisabled() {
 function removeIdea() {
   (this).parent().remove();
 }
-
-function getIdeasAndRender() {
-  let storedIdeas = JSON.parse(localStorage.getItem('ideas'))
-  for(i = 0; i < storedIdeas.length; i++) {
-    appendStuff(storedIdeas[i])
-  }
-} 
