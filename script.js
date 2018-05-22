@@ -29,13 +29,13 @@ function displayNewIdea(event) {
   <h2 class="idea"> ${titleInput.val()}</h2>
   <button class="delete icon"></button>
   </aside>
-  <aside class="body-text">
+  <aside>
   <p class="light-text">${bodyInput.val()}</p>
   </aside>
   <aside class="footer-text">
   <button class="upvote icon"></button>
   <button class="downvote icon"></button>
-  <p class="quality-text">Quality: ${qualitySwill}</p>
+  <p class="quality-text">quality: ${qualitySwill}</p>
   </aside>`);
   clearTitleInput();
   clearBodyInput();
