@@ -18,6 +18,7 @@ saveButton.on('click', function(e){
 titleInput.on('input', toggleSaveDisabled);
 bodyInput.on('input', toggleSaveDisabled);
 deleteButton.on('click', '.delete', removeIdea);
+getIdeasAndRender();
 
 function displayNewIdea() {
   ideaList.prepend(`

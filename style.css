@@ -88,27 +88,27 @@ p {
 }
 
 .delete {
-  background-image: url("/Users/kumi5605/Desktop/Turing-Docs/idea-box/delete.svg");
+  background-image: url("./images/delete.svg");
 }
 
 .delete:hover {
-  background-image: url("/Users/kumi5605/Desktop/Turing-Docs/idea-box/delete-hover.svg");
+  background-image: url("./images/delete-hover.svg");
 }
 
 .upvote {
-  background-image: url("/Users/kumi5605/Desktop/Turing-Docs/idea-box/upvote.svg");
+  background-image: url("./images/upvote.svg");
   text-align: center;
 }
 
 .upvote:hover {
-  background-image: url("/Users/kumi5605/Desktop/Turing-Docs/idea-box/upvote-hover.svg");
+  background-image: url("./images/upvote-hover.svg");
 }
 
 .downvote {
-  background-image: url("/Users/kumi5605/Desktop/Turing-Docs/idea-box/downvote.svg");
+  background-image: url("./images/downvote.svg");
   text-align: center;
 }
 
 .downvote:hover {
-  background-image: url("/Users/kumi5605/Desktop/Turing-Docs/idea-box/downvote-hover.svg");
+  background-image: url("./images/downvote-hover.svg");
 }
