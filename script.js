@@ -1,7 +1,7 @@
 var saveButton = $('#save-js');
 var titleInput = $('#title-input-value');
 var bodyInput = $('#body-input-value');
-var ideaList = $('.bottom');
+var ideaList = $('.cards-container');
 var qualitySwill = 'swill';
 var qualityPlausible = 'plausible';
 var qualityGenius = 'genius';
@@ -13,9 +13,6 @@ saveButton.on('click', displayNewIdea);
 
 function displayNewIdea(event) {
   event.preventDefault();
-  var titleInput = $('#title-input-value');
-  var bodyInput = $('#body-input-value');
-  var ideaList = $('.bottom');
   ideaList.prepend(`
   <h2> ${titleInput.val()}</h2>
   <button class="delete icon"></button>
@@ -31,12 +28,12 @@ function clearTitleInput() {
   titleInput.val('');
 }
 
-function clearBodyInput() {
+function clearBodyInpu3t() {
   bodyInput.val('');
 }
 
 // function toggleSaveDisabled() {
-//   if (titleInput.val() === '') {
+//   if (titleInput.val('')) || (title.Input.val('')) {
 //     saveButton.prop('disabled', true);
 //   } else {
 //     saveButton.prop('disabled', false);
