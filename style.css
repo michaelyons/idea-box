@@ -10,30 +10,21 @@ h1 {
     margin-bottom: 2rem;
 }
 
-h2 {
-  font-size: 1rem;
-}
-
 span{
     color: #6d6e71;
 }
 
 input {
-  width: 60vw;
+  width: 50vw;
   font-size: 1rem;
 }
 
 button {
-  width: 60vw;
+  width: 50vw;
 }
 
 p {
   text-align: justify;
-}
-
-.cards-container {
-  width: 60vw;
-  margin: 0 auto;
 }
 
 .top { 
@@ -81,6 +72,42 @@ p {
   height: 1.5rem;
 }
 
+.cards-container {
+  width: 50vw;
+  margin: 0 auto;
+  border-bottom: 2px solid #d1d3d4;
+}
+
+.title-text {
+  display: flex;
+  justify-content: space-between;
+}
+
+.idea {
+  font-size: 1.2rem;
+  color: #6d6e71;
+  margin-top: 2rem;
+  font-weight: 700;
+}
+
+.light-text {
+  margin-top: .6rem;
+  font-weight: 400;
+  color: #939598;
+  width: 50vw;
+}
+
+.footer-text {
+  margin: .75rem 0 .75rem 0;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.quality-text {
+  color: #6d6e71;
+  margin: .5rem;
+}
+
 .icon {
   border: none;
   height: 30px;
@@ -88,7 +115,8 @@ p {
 }
 
 .delete {
-  background-image: url("./images/delete.svg");
+  background-image: url("/Users/kumi5605/Desktop/Turing-Docs/idea-box/delete.svg");
+  margin-top: 2rem;
 }
 
 .delete:hover {
@@ -96,8 +124,8 @@ p {
 }
 
 .upvote {
-  background-image: url("./images/upvote.svg");
-  text-align: center;
+  background-image: url("/Users/kumi5605/Desktop/Turing-Docs/idea-box/upvote.svg");
+  margin-right: 2rem;
 }
 
 .upvote:hover {
@@ -105,8 +133,8 @@ p {
 }
 
 .downvote {
-  background-image: url("./images/downvote.svg");
-  text-align: center;
+  background-image: url("/Users/kumi5605/Desktop/Turing-Docs/idea-box/downvote.svg");
+  margin-right: 2rem;
 }
 
 .downvote:hover {
