@@ -22,6 +22,7 @@ getIdeasAndRender();
 
 function displayNewIdea() {
   ideaList.prepend(`
+  <div class="entire-card">
   <aside class="title-text">
   <h2 class="idea"> ${titleInput.val()}</h2>
   <button class="delete icon"></button>
@@ -33,7 +34,8 @@ function displayNewIdea() {
   <button class="upvote icon"></button>
   <button class="downvote icon"></button>
   <p class="quality-text">quality: ${qualitySwill}</p>
-  </aside>`);
+  </aside>
+  </div>`);
   clearTitleInput();
   clearBodyInput();
  };
@@ -51,6 +53,7 @@ function createIdea() {
 function getIdeasAndRender() {
   for(i = 0; i < ideasArray.length; i++) {
     ideaList.prepend(`
+    <div class="entire-card">
     <aside class="title-text">
     <h2 class="idea"> ${ideasArray[i].title}</h2>
     <button class="delete icon"></button>
@@ -62,7 +65,8 @@ function getIdeasAndRender() {
     <button class="upvote icon"></button>
     <button class="downvote icon"></button>
     <p class="quality-text">quality: ${ideasArray[i].quality}</p>
-    </aside>`);
+    </aside>
+    <div>`);
     clearTitleInput();
     clearBodyInput();
    };
@@ -87,3 +91,14 @@ function toggleSaveDisabled() {
 function removeIdea() {
   (this).parent().remove();
 }
+
+var searchInput = $('#search-idea');
+
+searchInput.on('keyup', function() {
+  var searchTerm =$(this).val().toLowerCase();
+  $('.entire-card').each(function(index, element){
+  var text= $(element).text().toLowerCase();
+  var match = !!text.match(searchTerm);
+  $(element).toggle(match);
+  })
+});
