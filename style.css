@@ -21,6 +21,11 @@ input {
 
 button {
   width: 50vw;
+  cursor: pointer;
+}
+
+button:focus {
+  outline: 0;
 }
 
 p {
