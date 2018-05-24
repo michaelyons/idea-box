@@ -2,9 +2,9 @@ var saveButton = $('#save-js');
 var titleInput = $('#title-input-value');
 var bodyInput = $('#body-input-value');
 var ideaList = $('.cards-container');
-var qualitySwill = 'swill';
-var qualityPlausible = 'plausible';
-var qualityGenius = 'genius';
+// var qualitySwill = 'swill';
+// var qualityPlausible = 'plausible';
+// var qualityGenius = 'genius';
 var deleteButton = $('.delete')
 var searchInput = $('#search-idea');
 var ideasArray = [];
@@ -19,7 +19,6 @@ function retrieveFromLocalStorage() {
   }
   getIdeasAndRender();
 }
-// ideasArray = JSON.parse(localStorage.getItem('ideas')) || [];
 
 saveButton.on('click', function(e){
   e.preventDefault();
@@ -74,7 +73,7 @@ function getIdeasAndRender() {
   ideaList.val('');
   for(i = 0; i < ideasArray.length; i++) {
     ideaList.prepend(`
-    <div id=${Date.now()} class="entire-card">
+    <div id=${ideasArray[i].id} class="entire-card">
       <aside class="title-text">
         <h2 class="idea"> ${ideasArray[i].title}</h2>
         <button class="delete icon"></button>
@@ -112,14 +111,19 @@ function toggleSaveDisabled() {
 }
 
 function changeQuality(cardIdea) {
-  console.log($(cardIdea).siblings());
   var qualityValue = $(cardIdea).siblings()[1];
-  var wordArray = ['quality: swill', 'quality: plausible', 'quality: genius'];
+  var wordArray = ['swill', 'plausible', 'genius'];
+  var cardId = $(cardIdea).parent().parent("div").attr("id");
+  
   $(cardIdea).hasClass('upvote') ? counter = counter + 1 : counter = counter - 1;
   counter > 2 ? counter = 2 : null;
   counter < 0 ? counter = 0 : null;
-  $(qualityValue).text(wordArray[counter]);
-}
+  
+  $(qualityValue).text("quality: " + wordArray[counter]);
+  var parsedObject = JSON.parse(localStorage.getItem([cardId]));
+  parsedObject.quality = wordArray[counter];
+  localStorage.setItem([parsedObject.id], JSON.stringify(parsedObject));
+};
 
 function removeIdea(target) {
   $(target).parent().parent().remove();
