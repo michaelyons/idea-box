@@ -8,8 +8,18 @@ var qualityGenius = 'genius';
 var deleteButton = $('.delete')
 var searchInput = $('#search-idea');
 var ideasArray = [];
+var counter = 0;
 
-ideasArray = JSON.parse(localStorage.getItem('ideas')) || [];
+$(document).ready(retrieveFromLocalStorage);
+
+function retrieveFromLocalStorage() {
+  for (var i=0; i < localStorage.length; i++) {
+    var storagePullBack = JSON.parse(localStorage.getItem(localStorage.key(i)));
+    ideasArray.push(storagePullBack);
+  }
+  getIdeasAndRender();
+}
+// ideasArray = JSON.parse(localStorage.getItem('ideas')) || [];
 
 saveButton.on('click', function(e){
   e.preventDefault();
@@ -20,11 +30,12 @@ titleInput.on('input', toggleSaveDisabled);
 bodyInput.on('input', toggleSaveDisabled);
 ideaList.on('click', function(e) {
   e.preventDefault();
-  if (e.target.classList.contains("upvote" || "downvote")) {
-    changeQuality();
+var buttonTarget = e.target.classList;
+  if (buttonTarget.contains("upvote") || buttonTarget.contains("downvote")) {
+    changeQuality(e.target);
   } else if (e.target.classList.contains("delete")) {
     removeIdea(e.target);
-  }
+  } 
 });
 getIdeasAndRender();
 
@@ -39,9 +50,11 @@ function displayNewIdea() {
       <p class="light-text">${bodyInput.val()}</p>
     </aside>
     <aside class="footer-text">
-      <button class="upvote icon"></button>
-      <button class="downvote icon"></button>
-      <p class="quality-text">quality: ${qualitySwill}</p>
+      <aside>
+        <button class="upvote icon"></button>
+        <button class="downvote icon"></button>
+      </aside>
+        <p class="quality-text">quality: ${qualitySwill}</p>
     </aside>
   </div>`);
   clearTitleInput();
@@ -72,8 +85,8 @@ function getIdeasAndRender() {
         <p class="light-text">${ideasArray[i].body}</p>
       </aside>
       <aside class="footer-text">
-        <button  class="upvote icon"></button>
-        <button  class="downvote icon"></button>
+          <button  class="upvote icon"></button>
+          <button  class="downvote icon"></button>
         <p class="quality-text">quality: ${ideasArray[i].quality}</p>
       </aside>
     <div>`);
@@ -98,6 +111,15 @@ function toggleSaveDisabled() {
   } else {
     saveButton.prop('disabled', false);
   }
+}
+
+function changeQuality(cardIdea) {
+  var qualityValue = cardIdea.parentNode.nextSibling.nextSibling;
+  var wordArray = ['quality: swill', 'quality: plausible', 'quality: genius'];
+  $(cardIdea).hasClass('upvote') ? counter = counter + 1 : counter = counter - 1;
+  counter > 2 ? counter = 2 : null;
+  counter < 0 ? counter = 0 : null;
+  $(qualityValue).text(wordArray[counter]);
 }
 
 function removeIdea(target) {
