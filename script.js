@@ -3,8 +3,6 @@ var titleInput = $('#title-input-value');
 var bodyInput = $('#body-input-value');
 var ideaList = $('.cards-container');
 var qualitySwill = 'swill';
-var qualityPlausible = 'plausible';
-var qualityGenius = 'genius';
 var deleteButton = $('.delete')
 var searchInput = $('#search-idea');
 var ideasArray = [];
@@ -40,7 +38,7 @@ var buttonTarget = e.target.classList;
 
 function displayNewIdea() {
   ideaList.prepend(`
-  <div id=${Date.now()} class="entire-card">
+  <div aria-label="ideas displayed here" id=${Date.now()} class="entire-card">
     <aside class="title-text">
       <h2 class="idea"> ${titleInput.val()}</h2>
       <button class="delete icon"></button>
@@ -73,7 +71,7 @@ function getIdeasAndRender() {
   ideaList.val('');
   for(i = 0; i < ideasArray.length; i++) {
     ideaList.prepend(`
-    <div id=${ideasArray[i].id} class="entire-card">
+    <div aria-label="idea displayed here" id=${ideasArray[i].id} class="entire-card">
       <aside class="title-text">
         <h2 class="idea"> ${ideasArray[i].title}</h2>
         <button class="delete icon"></button>
