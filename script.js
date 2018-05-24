@@ -2,9 +2,9 @@ var saveButton = $('#save-js');
 var titleInput = $('#title-input-value');
 var bodyInput = $('#body-input-value');
 var ideaList = $('.cards-container');
-// var qualitySwill = 'swill';
-// var qualityPlausible = 'plausible';
-// var qualityGenius = 'genius';
+var qualitySwill = 'swill';
+var qualityPlausible = 'plausible';
+var qualityGenius = 'genius';
 var deleteButton = $('.delete')
 var searchInput = $('#search-idea');
 var ideasArray = [];
@@ -36,7 +36,7 @@ var buttonTarget = e.target.classList;
     removeIdea(e.target);
   } 
 });
-getIdeasAndRender();
+  getIdeasAndRender();
 
 function displayNewIdea() {
   ideaList.prepend(`
@@ -87,8 +87,8 @@ function getIdeasAndRender() {
         <p class="quality-text">quality: ${ideasArray[i].quality}</p>
       </aside>
     <div>`);
-    clearTitleInput();
-    clearBodyInput();
+  clearTitleInput();
+  clearBodyInput();
    };
   }
   
