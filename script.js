@@ -50,10 +50,8 @@ function displayNewIdea() {
       <p class="light-text">${bodyInput.val()}</p>
     </aside>
     <aside class="footer-text">
-      <aside>
         <button class="upvote icon"></button>
         <button class="downvote icon"></button>
-      </aside>
         <p class="quality-text">quality: ${qualitySwill}</p>
     </aside>
   </div>`);
@@ -114,7 +112,8 @@ function toggleSaveDisabled() {
 }
 
 function changeQuality(cardIdea) {
-  var qualityValue = cardIdea.parentNode.nextSibling.nextSibling;
+  console.log($(cardIdea).siblings());
+  var qualityValue = $(cardIdea).siblings()[1];
   var wordArray = ['quality: swill', 'quality: plausible', 'quality: genius'];
   $(cardIdea).hasClass('upvote') ? counter = counter + 1 : counter = counter - 1;
   counter > 2 ? counter = 2 : null;
