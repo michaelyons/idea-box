@@ -18,12 +18,19 @@ saveButton.on('click', function(e){
 });
 titleInput.on('input', toggleSaveDisabled);
 bodyInput.on('input', toggleSaveDisabled);
-ideaList.on('click', '.delete', removeIdea);
+ideaList.on('click', function(e) {
+  e.preventDefault();
+  if (e.target.classList.contains("upvote" || "downvote")) {
+    changeQuality();
+  } else if (e.target.classList.contains("delete")) {
+    removeIdea(e.target);
+  }
+});
 getIdeasAndRender();
 
 function displayNewIdea() {
   ideaList.prepend(`
-  <div class="entire-card" data-index=${ideasArray.length - 1}>
+  <div id=${Date.now()} class="entire-card">
     <aside class="title-text">
       <h2 class="idea"> ${titleInput.val()}</h2>
       <button class="delete icon"></button>
@@ -45,17 +52,18 @@ function createIdea() {
   var ideaObject = {
     title: titleInput.val(),
     body: bodyInput.val(),
+    id: Date.now(),
     quality: "swill"
   };
   ideasArray.push(ideaObject);
-  localStorage.setItem('ideas', JSON.stringify(ideasArray));
+  localStorage.setItem([ideaObject.id], JSON.stringify(ideaObject));
  }
 
 function getIdeasAndRender() {
   ideaList.val('');
   for(i = 0; i < ideasArray.length; i++) {
     ideaList.prepend(`
-    <div class="entire-card" data-index=${i}>
+    <div id=${Date.now()} class="entire-card">
       <aside class="title-text">
         <h2 class="idea"> ${ideasArray[i].title}</h2>
         <button class="delete icon"></button>
@@ -64,8 +72,8 @@ function getIdeasAndRender() {
         <p class="light-text">${ideasArray[i].body}</p>
       </aside>
       <aside class="footer-text">
-        <button class="upvote icon"></button>
-        <button class="downvote icon"></button>
+        <button  class="upvote icon"></button>
+        <button  class="downvote icon"></button>
         <p class="quality-text">quality: ${ideasArray[i].quality}</p>
       </aside>
     <div>`);
@@ -76,10 +84,12 @@ function getIdeasAndRender() {
   
 function clearTitleInput() {
   titleInput.val('');
+  toggleSaveDisabled();
 }
 
 function clearBodyInput() {
   bodyInput.val('');
+  toggleSaveDisabled();
 }
 
 function toggleSaveDisabled() {
@@ -90,12 +100,10 @@ function toggleSaveDisabled() {
   }
 }
 
-function removeIdea() {
-  var index = $(this).parent().parent()[0].dataset.index;
-  ideasArray.splice(index, 1);
-  localStorage.setItem('ideas', JSON.stringify(ideasArray));
-  $(this).parent().parent().remove();
-}
+function removeIdea(target) {
+  $(target).parent().parent().remove();
+  localStorage.removeItem([target.parentNode.parentNode.id]);
+};
 
 searchInput.on('keyup', function() {
   var searchTerm =$(this).val().toLowerCase();
