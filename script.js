@@ -16,13 +16,14 @@ function retrieveFromLocalStorage() {
     ideasArray.push(storagePullBack);
   }
   getIdeasAndRender();
-}
+// }
 
 saveButton.on('click', function(e){
   e.preventDefault();
   createIdea();
   displayNewIdea();
 });
+
 titleInput.on('input', toggleSaveDisabled);
 bodyInput.on('input', toggleSaveDisabled);
 ideaList.on('click', function(e) {
@@ -135,4 +136,4 @@ searchInput.on('keyup', function() {
   var match = !!text.match(searchTerm);
   $(element).toggle(match);
   })
-});
+})};
