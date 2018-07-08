@@ -16,7 +16,7 @@ function retrieveFromLocalStorage() {
     ideasArray.push(storagePullBack);
   }
   getIdeasAndRender();
-// }
+}
 
 saveButton.on('click', function(e){
   e.preventDefault();
@@ -136,4 +136,4 @@ searchInput.on('keyup', function() {
   var match = !!text.match(searchTerm);
   $(element).toggle(match);
   })
-})};
+});
